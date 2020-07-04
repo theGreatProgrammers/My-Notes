@@ -75,7 +75,9 @@ search.addEventListener('input', () => {
     let noteCards = document.getElementsByClassName('noteCard');
     Array.from(noteCards).forEach((element) => {
         let cardTxt = element.getElementsByTagName('p')[0].innerText;
-        if(cardTxt.includes(inputVal)){
+        let titleTxt = element.getElementsByTagName('h5')[0].innerText;
+        // let titleTxt = element.
+        if((cardTxt.includes(inputVal)) || (titleTxt.includes(inputVal))){
             element.style.display = 'block';
         }
         else{
