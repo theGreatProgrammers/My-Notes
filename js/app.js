@@ -1,14 +1,14 @@
-console.log("Welcome");
 showNotes();
+
+
 let addBtn = document.getElementById('addBtn');
+
 addBtn.addEventListener('click', (event) => {
     let addTxt = document.getElementById('addTxt');
     let notes = localStorage.getItem('notes');
     let addTitle = document.getElementById('addTitle');
     if (notes == null) {
-
         notesObj = [];
-
     }
     else {
 
@@ -23,7 +23,6 @@ addBtn.addEventListener('click', (event) => {
     localStorage.setItem('notes', JSON.stringify(notesObj));
     addTxt.value = '';
     addTitle.value = '';
-    // console.log(notesObj);
     showNotes();
 
 });
@@ -42,7 +41,7 @@ function showNotes() {
                     <div class="card-body">
                         <h5 class="card-title">${element.title}</h5>
                         <p class="card-text">${element.text}</p>
-                        <button id = "${index}" onclick = "deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
+                        <button id = "${index}" onclick = "deleteNote(this.id)" class="btn btn-primary">Delete this Note</button>
                     </div>
                 </div>`;
     });
@@ -51,7 +50,7 @@ function showNotes() {
         notesElm.innerHTML = html;
     }
     else {
-        notesElm.innerHTML = `<h5>Nothing To Show Here. Use "Add Note" to add a note</h5>`;
+        notesElm.innerHTML = `<h5>Nothing To Show Here. Use "Add a Note" to add a note</h5>`;
     }
 }
 
@@ -76,7 +75,6 @@ search.addEventListener('input', () => {
     Array.from(noteCards).forEach((element) => {
         let cardTxt = element.getElementsByTagName('p')[0].innerText;
         let titleTxt = element.getElementsByTagName('h5')[0].innerText;
-        // let titleTxt = element.
         if((cardTxt.includes(inputVal)) || (titleTxt.includes(inputVal))){
             element.style.display = 'block';
         }
